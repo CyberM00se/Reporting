@@ -6,6 +6,10 @@
 * [Bifur](targets/bifur.md)
 * [Borormir](targets/borormir.md)
 
+***
+
+* [Useful Things](useful-things.md)
+
 ## Labs
 
 * [Warmup](labs/warmup.md)

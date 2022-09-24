@@ -44,7 +44,7 @@ allow_\_url\_include must be on in the config for RFI._
 
 Executing commands on php
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
 
 ```php
 <?php
