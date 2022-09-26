@@ -6,9 +6,9 @@
 * [Bifur](targets/bifur.md)
 * [Borormir](targets/borormir.md)
 
-***
+## Useful Things
 
-* [Useful Things](useful-things.md)
+* [Page 1](useful-things/page-1.md)
 
 ## Labs
 

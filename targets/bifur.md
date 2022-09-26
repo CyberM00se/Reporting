@@ -40,7 +40,7 @@ The aim of this Pentest is to assess the security of a clients endpoint Bifur. T
 
 ### Target Overview
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption><p>NsLookup of Domain</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (28).png" alt=""><figcaption><p>NsLookup of Domain</p></figcaption></figure>
 
 ### Vulnerabilities&#x20;
 
@@ -70,7 +70,7 @@ Source
 
 ### Scanning and Enumeration
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption><p>nmap of IP to determine services</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>nmap of IP to determine services</p></figcaption></figure>
 
 The Nmap scan shows the service scan of the target IP. Two services can be seen to be open: SSH and Nginx. This lets us know that there is probably an active web page.
 
@@ -82,11 +82,11 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 This section will detail how the initial vulnerability was found and exploited.
 
-<figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption><p>Burpsuite output of view log page.</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption><p>Burpsuite output of view log page.</p></figcaption></figure>
 
 Burp suite gives an editable output of what the page is sending to the web server. This allows for the manual manipulation of the file that is viewed by changing the logfiles path.
 
-<figure><img src="../.gitbook/assets/image (21).png" alt=""><figcaption><p>View log button</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption><p>View log button</p></figcaption></figure>
 
 #### Foothold
 
@@ -96,7 +96,7 @@ Burp suite gives an editable output of what the page is sending to the web serve
 
 The command above is the command to cat the /etc/passwd file of the target machine and start a reverse shell.
 
-<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption><p>Attack in Burpsuite</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>Attack in Burpsuite</p></figcaption></figure>
 
 Because the attack is going through the web server, the attack needs to be URL encoded. If not the attack will fail and error out.
 
@@ -132,27 +132,27 @@ s
 
 </details>
 
-<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption><p>Creating Reverse Shell in metasploit</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (45).png" alt=""><figcaption><p>Creating Reverse Shell in metasploit</p></figcaption></figure>
 
 This shows how to gain an active reverse shell to the target from Metasploit
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>elevating the shell to a meterpreter shell</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>elevating the shell to a meterpreter shell</p></figcaption></figure>
 
 We want to elevate the reverse shell to a Meterpreter session so we can execute our privilege Escalation.
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Settings for the elevated session</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption><p>Settings for the elevated session</p></figcaption></figure>
 
 This shows the options of how to elevate the reverse shell to Meterpreter session
 
-<figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption><p>How to list sessions</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption><p>How to list sessions</p></figcaption></figure>
 
 Using the command _sessions -i_ we can list the current active sessions
 
-<figure><img src="../.gitbook/assets/image (23).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
 
 This screenshot shows the settings set so you can elevate the connection
 
-<figure><img src="../.gitbook/assets/image (42).png" alt=""><figcaption><p>Active sessions after elevation</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (41).png" alt=""><figcaption><p>Active sessions after elevation</p></figcaption></figure>
 
 You can see the elevated session was created with ID 3.&#x20;
 
@@ -164,31 +164,31 @@ Privilege escalation typically starts out with searching through currently runni
 
 Even though I know there are vulnerabilities, I need to determine what version is currently being run. I eventually found the version number below.
 
-<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>Webmin version number</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption><p>Webmin version number</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Creating a Proxy in Metasploit</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Creating a Proxy in Metasploit</p></figcaption></figure>
 
 Webmin is a http service that runs locally. In order for this specific exploit to work, you need to setup a reverse proxy. The picture above is how that is setup.
 
-<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>Backdoor Settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>Backdoor Settings</p></figcaption></figure>
 
 The top box is the format for how to set the proxy in the exploit. This is critical as the exploit wont work without it. The middle box shows the configured proxy and rhost. Same thing for the Lhost on the bottom box. SSL has to be on / set to True
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Flags to force the exploit to work</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>Flags to force the exploit to work</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (43).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
 
 This screenshot shows the root flag as proof of root compromise.
 
 #### Persistence
 
-<figure><img src="../.gitbook/assets/image (27).png" alt=""><figcaption><p>User Creation </p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>User Creation </p></figcaption></figure>
 
 This screenshot shows the creation of my own user. This allows me to directly SSH to the target.
 
-<figure><img src="../.gitbook/assets/image (47).png" alt=""><figcaption><p>mod the created user</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (26).png" alt=""><figcaption><p>mod the created user</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>my user passwd</p></figcaption></figure>
 
