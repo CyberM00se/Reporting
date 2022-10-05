@@ -70,7 +70,7 @@ Source
 
 ### Scanning and Enumeration
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>nmap of IP to determine services</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>nmap of IP to determine services</p></figcaption></figure>
 
 The Nmap scan shows the service scan of the target IP. Two services can be seen to be open: SSH and Nginx. This lets us know that there is probably an active web page.
 
@@ -170,7 +170,7 @@ Even though I know there are vulnerabilities, I need to determine what version i
 
 Webmin is a http service that runs locally. In order for this specific exploit to work, you need to setup a reverse proxy. The picture above is how that is setup.
 
-<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>Backdoor Settings</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (10) (1).png" alt=""><figcaption><p>Backdoor Settings</p></figcaption></figure>
 
 The top box is the format for how to set the proxy in the exploit. This is critical as the exploit wont work without it. The middle box shows the configured proxy and rhost. Same thing for the Lhost on the bottom box. SSL has to be on / set to True
 
@@ -178,19 +178,19 @@ The top box is the format for how to set the proxy in the exploit. This is criti
 
 <figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
 
 This screenshot shows the root flag as proof of root compromise.
 
 #### Persistence
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>User Creation </p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>User Creation </p></figcaption></figure>
 
 This screenshot shows the creation of my own user. This allows me to directly SSH to the target.
 
 <figure><img src="../.gitbook/assets/image (26).png" alt=""><figcaption><p>mod the created user</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>my user passwd</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>my user passwd</p></figcaption></figure>
 
 Persistance Account PW: Youcantguessmypassword1a
 

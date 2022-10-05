@@ -6,7 +6,11 @@ This report is intended only for the use of the individual or entity to which it
 
 ## Executive Summary
 
-ff
+This report documents the findings of a penetration test carried out by Noah Beckman against the target Boromir. The project was completed in September 2022 and revealed the existence of two security-relevant issues. The completion of the assessment took a total of three days.&#x20;
+
+The main target in scope was a computer running a WordPress Website. Methodology wise the assessment followed a black-box approach, meaning there was no access to the source code or file system. The Cyber.local team provided the environment and reset capabilities.
+
+The aforementioned compromises involve two actual security vulnerabilities and multiple general weaknesses. The majority of these discoveries received a high severity ranking as root level compromise was possible as well as local file exploitation potentially disclosing PII information.&#x20;
 
 ### Some Definitions
 
@@ -29,14 +33,15 @@ ff
 | IP Addresses | Network                |
 | ------------ | ---------------------- |
 | 10.0.5.250   | fw-rivendell.shire.org |
+| 10.0.6.51    | Boromir                |
 
 <figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption><p>Box Nslookup</p></figcaption></figure>
 
 ### Vulnerabilities&#x20;
 
-> #### Local File Inclusion
+> #### Default Password Use
 
-*   Severity (High Threat Directory Traversal)
+*   Severity (High WordPress Admin Access)
 
     > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
 *   Mitigation
@@ -47,23 +52,37 @@ ff
 
 ### Scanning and Enumeration
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>nslookup of the wordpress box</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+The first step in the Pentest was to enumerate the network to find the target. This can be done, as seen above, with the nslookup command.&#x20;
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption><p>nmaps scan of target</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption></figcaption></figure>
+The next step is to further enumerate the target with a port scanner. The screenshot above shows the open services on the target. The screenshot below shows more details
 
-<details>
+<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>nmap scan with additional flags</p></figcaption></figure>
 
-<summary>etc/passwd</summary>
+<figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption><p>Wpscan</p></figcaption></figure>
 
-www-data:/var/www/html $ cat /etc/passwd root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin bin:x:2:2:bin:/bin:/usr/sbin/nologin sys:x:3:3:sys:/dev:/usr/sbin/nologin sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/usr/sbin/nologin man:x:6:12:man:/var/cache/man:/usr/sbin/nologin lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin mail:x:8:8:mail:/var/mail:/usr/sbin/nologin news:x:9:9:news:/var/spool/news:/usr/sbin/nologin uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin proxy:x:13:13:proxy:/bin:/usr/sbin/nologin www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin backup:x:34:34:backup:/var/backups:/usr/sbin/nologin list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin irc:x:39:39:ircd:/run/ircd:/usr/sbin/nologin gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin \_apt:x:100:65534::/nonexistent:/usr/sbin/nologin systemd-network:x:101:102:systemd Network Management,,,:/run/systemd:/usr/sbin/nologin systemd-resolve:x:102:103:systemd Resolver,,,:/run/systemd:/usr/sbin/nologin messagebus:x:103:104::/nonexistent:/usr/sbin/nologin systemd-timesync:x:104:105:systemd Time Synchronization,,,:/run/systemd:/usr/sbin/nologin pollinate:x:105:1::/var/cache/pollinate:/bin/false sshd:x:106:65534::/run/sshd:/usr/sbin/nologin syslog:x:107:113::/home/syslog:/usr/sbin/nologin uuidd:x:108:114::/run/uuidd:/usr/sbin/nologin tcpdump:x:109:115::/nonexistent:/usr/sbin/nologin tss:x:110:116:TPM software stack,,,:/var/lib/tpm:/bin/false landscape:x:111:117::/var/lib/landscape:/usr/sbin/nologin usbmux:x:112:46:usbmux daemon,,,:/var/lib/usbmux:/usr/sbin/nologin lxd:x:999:100::/var/snap/lxd/common/lxd:/bin/false deployer:x:1001:1001:deployer,,,:/home/deployer:/bin/bash mysql:x:113:118:MySQL Server,,,:/nonexistent:/bin/false elrond:x:1002:1002::/home/elrond:/bin/bash
+Another enumeration tool is wpscan. We can see that a wordpress server is running in the previous screenshot. We can use wpscan to enumerate the web server. Next, attempt to navigate the website.&#x20;
 
-</details>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Website</p></figcaption></figure>
 
-{% embed url="https://github.com/WhiteWinterWolf/wwwolf-php-webshell/blob/master/webshell.php" %}
+The screenshot above shows the landing space for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
+
+### Initial Compromise / Foothold&#x20;
+
+The account uses a set of default credentials to login to the admin account:
+
+**Username**: Admin\_02
+
+**Password**: admin1234
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Admin Panel</p></figcaption></figure>
+
+Once access to the WordPress admin page is a terminal plugin that can be installed. This can be seen above and below.&#x20;
 
 <figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
 
