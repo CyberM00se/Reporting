@@ -8,7 +8,7 @@
 
 ## Useful Things
 
-* [Page 1](useful-things/page-1.md)
+* [Proxy Chains](useful-things/proxy-chains.md)
 
 ## Labs
 
