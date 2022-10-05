@@ -50,7 +50,7 @@ The aforementioned compromises involve two actual security vulnerabilities and m
 
 ## Supporting Evidence
 
-### Scanning and Enumeration
+### Scanning and Enumeration - WordPress
 
 <figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>nslookup of the wordpress box</p></figcaption></figure>
 
@@ -84,13 +84,25 @@ The account uses a set of default credentials to login to the admin account:
 
 Once access to the WordPress admin page is a terminal plugin that can be installed. This can be seen above and below.&#x20;
 
-<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (13).png" alt=""><figcaption><p>local user password</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+While in the terminal you can search through config files and find a database with a local user password stored in plaintext. Using this will give direct SSH access to the target.&#x20;
+
+**username**: Elrond
+
+**password** elrond77
+
+<figure><img src="../.gitbook/assets/image (30).png" alt=""><figcaption><p>logging in as elrond on the wordpress target</p></figcaption></figure>
+
+The screenshot above shows login to the target machine. The screenshot below shows the user flag for Elrond.&#x20;
 
 <figure><img src="../.gitbook/assets/image (44).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+### Enumeration - Boromir
+
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>First target IP</p></figcaption></figure>
+
+The first step in enumerating the Boromir target is to determine what subnet it is on. a quick look at the ip of the Wordpress machine shows us the new subnet of 10.0.6.x. There are a variety of ways to determine what is on the network. I chose to just ping the next IP.
 
 <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption></figcaption></figure>
 
