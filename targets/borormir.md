@@ -35,7 +35,7 @@ The aforementioned compromises involve two actual security vulnerabilities and m
 | 10.0.5.250   | fw-rivendell.shire.org |
 | 10.0.6.51    | Boromir                |
 
-<figure><img src="../.gitbook/assets/image (37) (1).png" alt=""><figcaption><p>Box Nslookup</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (37).png" alt=""><figcaption><p>Box Nslookup</p></figcaption></figure>
 
 ### Vulnerabilities&#x20;
 
@@ -52,7 +52,7 @@ The aforementioned compromises involve two actual security vulnerabilities and m
 
 ### Scanning and Enumeration - WordPress
 
-<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption><p>nslookup of the wordpress box</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>nslookup of the wordpress box</p></figcaption></figure>
 
 The first step in the Pentest was to enumerate the network to find the target. This can be done, as seen above, with the nslookup command.&#x20;
 
@@ -70,7 +70,7 @@ Another enumeration tool is wpscan. We can see that a wordpress server is runnin
 
 The screenshot above shows the landing space for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
 
 ### Initial Compromise / Foothold&#x20;
 
@@ -80,7 +80,7 @@ The account uses a set of default credentials to login to the admin account:
 
 **Password**: admin1234
 
-<figure><img src="../.gitbook/assets/image (3) (2).png" alt=""><figcaption><p>Admin Panel</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (1).png" alt=""><figcaption><p>Admin Panel</p></figcaption></figure>
 
 Once access to the WordPress admin page is a terminal plugin that can be installed. This can be seen above and below.&#x20;
 
@@ -100,13 +100,13 @@ The screenshot above shows login to the target machine. The screenshot below sho
 
 ### Enumeration - Boromir
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>First target IP</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>First target IP</p></figcaption></figure>
 
 The first step in enumerating the Boromir target is to determine what subnet it is on. a quick look at the IP of the WordPress machine shows us the new subnet of 10.0.6.x. There are a variety of ways to determine what is on the network. I chose to just ping the next IP.
 
 <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption><p>Pinging of Boromir </p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
 
 Next, in order to gain further information, the IP was curled to determine if there was anything running a web server. Luckily, there was. the screenshot above shows the html content. Knowing this, I setup proxy chains so I could navigate to the site and eventually exploit it.
 
@@ -118,7 +118,7 @@ Instructions on how to setup ProxyChains
 
 After setting proxy chains you can then nmap against the target and set a proxy in Firefox to navigate to the site
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
 
 This website is using WebSVN 2.6.0. This is critical to the foothold. After searching google for a vulnerability the following unauthenticated RCE came up:
 
@@ -128,7 +128,7 @@ Vulnerability Code
 
 There is an issue with this payload though. A few lines have to be edited for it to work. Adding print statements for feedback is helpful when debugging.&#x20;
 
-<figure><img src="../.gitbook/assets/image (16).png" alt=""><figcaption><p>Changes to script</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>Changes to script</p></figcaption></figure>
 
 The payload had to be changed to reflect the kali attacker machine for a reverse shell. Boromir also only allows 80 and 443 out so it needs to use 443. Lastly, there is an extra parent directory websvn that is used. Once inside the Boromir target credentials need to be found. A directory with Boromir's hash can be found in /etc/ called svn-auth-accounts then cracked with RockYou and Hashcat.&#x20;
 
@@ -142,7 +142,7 @@ $apr1$/dPEVRIP$33jd0o1KAzXVVJaSPDwCV/:boromir1984
 
 Now that we have the password, we can SSH to Boromir instead of using the reverse shell still using proxy chains. This gives us the user flag. This all can be seen below.&#x20;
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17) (1).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
 
 **Username**: Boromir
 
@@ -152,4 +152,4 @@ Now that we have the password, we can SSH to Boromir instead of using the revers
 
 The last step is to Privilege escalate. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
