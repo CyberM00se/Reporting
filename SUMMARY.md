@@ -21,3 +21,4 @@
 ## Tools and Loot
 
 * [Loot](tools-and-loot/loot.md)
+* [Report Template](tools-and-loot/report-template.md)
