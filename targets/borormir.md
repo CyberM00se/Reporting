@@ -66,11 +66,11 @@ The next step is to further enumerate the target with a port scanner. The screen
 
 Another enumeration tool is wpscan. We can see that a wordpress server is running in the previous screenshot. We can use wpscan to enumerate the web server. Next, attempt to navigate the website.&#x20;
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Website</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>Website</p></figcaption></figure>
 
 The screenshot above shows the landing space for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
 
 ### Initial Compromise / Foothold&#x20;
 
@@ -106,20 +106,50 @@ The first step in enumerating the Boromir target is to determine what subnet it 
 
 <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption><p>Pinging of Boromir </p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
 
 Next, in order to gain further information, the IP was curled to determine if there was anything running a web server. Luckily, there was. the screenshot above shows the html content. Knowing this, I setup proxy chains so I could navigate to the site and eventually exploit it.
 
+#### Setting up ProxyChains
 
+{% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/proxy-chains" %}
+Instructions on how to setup ProxyChains
+{% endembed %}
 
+After setting proxy chains you can then nmap against the target and set a proxy in Firefox to navigate to the site
 
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption></figcaption></figure>
+This website is using WebSVN 2.6.0. This is critical to the foothold. After searching google for a vulnerability the following unauthenticated RCE came up:
 
-<figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+{% embed url="https://www.exploit-db.com/exploits/50042" %}
+Vulnerability Code
+{% endembed %}
+
+There is an issue with this payload though. A few lines have to be edited for it to work. Adding print statements for feedback is helpful when debugging.&#x20;
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Changes to script</p></figcaption></figure>
+
+The payload had to be changed to reflect the kali attacker machine for a reverse shell. Boromir also only allows 80 and 443 out so it needs to use 443. Lastly, there is an extra parent directory websvn that is used. Once inside the Boromir target credentials need to be found. A directory with Boromir's hash can be found in /etc/ called svn-auth-accounts then cracked with RockYou and Hashcat.&#x20;
+
+<figure><img src="../.gitbook/assets/image (15).png" alt=""><figcaption><p>Boromir's Has dumbed from svn-auth-accounts</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (38).png" alt=""><figcaption><p>hashcatting the password (its and MD5 hash so hashcat type 1600)</p></figcaption></figure>
 
 ```
 $apr1$/dPEVRIP$33jd0o1KAzXVVJaSPDwCV/:boromir1984
 ```
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+Now that we have the password, we can SSH to Boromir instead of using the reverse shell still using proxy chains. This gives us the user flag. This all can be seen below.&#x20;
+
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
+
+**Username**: Boromir
+
+**Password**: boromir1984
+
+### Privilege Escalation&#x20;
+
+The last step is to Privilege escalate. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
+
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption></figcaption></figure>

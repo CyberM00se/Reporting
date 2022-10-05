@@ -148,7 +148,7 @@ This shows the options of how to elevate the reverse shell to Meterpreter sessio
 
 Using the command _sessions -i_ we can list the current active sessions
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
 
 This screenshot shows the settings set so you can elevate the connection
 
