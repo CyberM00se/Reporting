@@ -46,13 +46,13 @@ The aforementioned compromises involve one actual security vulnerabilities (CVE)
     > This vulnerability allows for easy login to the administrative account. Administrative accounts have access to lots of potentially harmful information if leaked.&#x20;
 *   Mitigation
 
-    > Accounts that have overarching access need to have strong passwords and if possible 2FA. It is best, especially for administrative accounts, to make sure the password is not common. A passphrase is typically recommended.&#x20;
+    > First change all default passwords. Second, Accounts that have overarching access need to have strong passwords and if possible 2FA. It is best, especially for administrative accounts, to make sure the password is not common. A passphrase is typically recommended.&#x20;
 
 > #### Using WordPress - (WordPress web terminal)
 
 *   Severity (High WordPress Web terminal)
 
-    > WordPress is notorious for having tons of vulnerabilities and issues. The one exploited in this pentest was a plugin installed that gives terminal access to the computer.&#x20;
+    > WordPress is notorious for having tons of vulnerabilities and issues. The one exploited in this Pentest was a plugin installed that gives terminal access to the computer.&#x20;
 *   Mitigation
 
     > The best mitigation for this is to not use WordPress. If that is not possible, lock down the admin account, put rules and or filters on what plugins are allowed.
@@ -61,7 +61,7 @@ The aforementioned compromises involve one actual security vulnerabilities (CVE)
 
 *   Severity (High plaintext password)
 
-    > This misconfiguration allows for attackers to easily acquire hard coded passwords or accounts. This pentest had two versions of this. A hard coded password for a user account and a password hash to a different user account.
+    > This misconfiguration allows for attackers to easily acquire hard coded passwords or accounts. This Pentest had two versions of this. A hard coded password for a user account and a password hash to a different user account.
 *   Mitigation
 
     > It is better to use hashes instead for hard coding passwords, assuming they are necessary. Make sure to keep the password strong and as many characters as possible so it cannot be cracked.&#x20;
@@ -95,7 +95,7 @@ Another enumeration tool is wpscan. We can see that a wordpress server is runnin
 
 <figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>Website</p></figcaption></figure>
 
-The screenshot above shows the landing space for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
+The screenshot above shows the landing page for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
 
@@ -135,7 +135,7 @@ The first step in enumerating the Boromir target is to determine what subnet it 
 
 <figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
 
-Next, in order to gain further information, the IP was curled to determine if there was anything running a web server. Luckily, there was. the screenshot above shows the html content. Knowing this, I setup proxy chains so I could navigate to the site and eventually exploit it.
+Next, in order to gain further information, the IP was curled to determine if there was anything running as a web server. Luckily, there was. the screenshot above shows the html content. Knowing this, I setup proxy chains so I could navigate to the site and eventually exploit it.
 
 #### Setting up ProxyChains
 
@@ -177,6 +177,10 @@ Now that we have the password, we can SSH to Boromir instead of using the revers
 
 ### Privilege Escalation&#x20;
 
-The last step is to Privilege escalate. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
+The last step is to Escalate Privilege. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+### Conclusions and Recommendations
+
+In conclusion, the assessment identified that some of the most common issues are misconfigurations such as password reuse and hard coding passwords. Properly configured services that do not leak any critical information is important. Updating services, changing passwords, and not using WordPress would be the best solution / recommendation for the client.
