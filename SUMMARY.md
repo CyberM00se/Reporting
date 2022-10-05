@@ -5,6 +5,7 @@
 * [Gloin](README.md)
 * [Bifur](targets/bifur.md)
 * [Borormir](targets/borormir.md)
+* [ShadowFax](targets/shadowfax.md)
 
 ## Useful Things
 
