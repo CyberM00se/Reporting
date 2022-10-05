@@ -148,7 +148,7 @@ This shows the options of how to elevate the reverse shell to Meterpreter sessio
 
 Using the command _sessions -i_ we can list the current active sessions
 
-<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
 
 This screenshot shows the settings set so you can elevate the connection
 
@@ -166,7 +166,7 @@ Even though I know there are vulnerabilities, I need to determine what version i
 
 <figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption><p>Webmin version number</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Creating a Proxy in Metasploit</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Creating a Proxy in Metasploit</p></figcaption></figure>
 
 Webmin is a http service that runs locally. In order for this specific exploit to work, you need to setup a reverse proxy. The picture above is how that is setup.
 
