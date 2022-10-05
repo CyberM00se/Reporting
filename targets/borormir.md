@@ -6,11 +6,11 @@ This report is intended only for the use of the individual or entity to which it
 
 ## Executive Summary
 
-This report documents the findings of a penetration test carried out by Noah Beckman against the target Boromir. The project was completed in September 2022 and revealed the existence of two security-relevant issues. The completion of the assessment took a total of three days.&#x20;
+This report documents the findings of a penetration test carried out by Noah Beckman against the targets fw-rivendell and Boromir. The project was completed in September 2022 and revealed the existence of four security-relevant issues. The completion of the assessment took a total of three days.&#x20;
 
-The main target in scope was a computer running a WordPress Website. Methodology wise the assessment followed a black-box approach, meaning there was no access to the source code or file system. The Cyber.local team provided the environment and reset capabilities.
+The main target in scope was a computer running a WordPress Website and a WebSVN internal site. Methodology wise the assessment followed a black-box approach, meaning there was no access to the source code or file system. The Cyber.local team provided the environment and reset capabilities.
 
-The aforementioned compromises involve two actual security vulnerabilities and multiple general weaknesses. The majority of these discoveries received a high severity ranking as root level compromise was possible as well as local file exploitation potentially disclosing PII information.&#x20;
+The aforementioned compromises involve one actual security vulnerabilities (CVE) and multiple general weaknesses and misconfigurations. The majority of these discoveries received a high severity ranking as root level compromise was possible as well as RCE potentially disclosing PII information.&#x20;
 
 ### Some Definitions
 
@@ -43,10 +43,37 @@ The aforementioned compromises involve two actual security vulnerabilities and m
 
 *   Severity (High WordPress Admin Access)
 
-    > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
+    > This vulnerability allows for easy login to the administrative account. Administrative accounts have access to lots of potentially harmful information if leaked.&#x20;
 *   Mitigation
 
-    > The web form needs to validate inputs and maintain a whitelist of acceptable filenames. In addition, a corresponding identifier (not the actual name) to access the file should be used. Any request containing an invalid identifier can then simply be rejected. This is the [approach that OWASP recommends](https://www.owasp.org/index.php/Testing\_for\_Remote\_File\_Inclusion). Refer to the source below for more information on mitigation.
+    > Accounts that have overarching access need to have strong passwords and if possible 2FA. It is best, especially for administrative accounts, to make sure the password is not common. A passphrase is typically recommended.&#x20;
+
+> #### Using WordPress - (WordPress web terminal)
+
+*   Severity (High WordPress Web terminal)
+
+    > WordPress is notorious for having tons of vulnerabilities and issues. The one exploited in this pentest was a plugin installed that gives terminal access to the computer.&#x20;
+*   Mitigation
+
+    > The best mitigation for this is to not use WordPress. If that is not possible, lock down the admin account, put rules and or filters on what plugins are allowed.
+
+> #### Local Password Storage - Plaintext password
+
+*   Severity (High plaintext password)
+
+    > This misconfiguration allows for attackers to easily acquire hard coded passwords or accounts. This pentest had two versions of this. A hard coded password for a user account and a password hash to a different user account.
+*   Mitigation
+
+    > It is better to use hashes instead for hard coding passwords, assuming they are necessary. Make sure to keep the password strong and as many characters as possible so it cannot be cracked.&#x20;
+
+> #### Websvn 2.6.0 - Remote Code Execution (Unauthenticated)
+
+*   Severity (High RCE)
+
+    > This vulnerability gives the attacker remote code execution (a reverse shell) to the system.&#x20;
+*   Mitigation
+
+    > Updating websvn to the newest version will most likely fix this vulnerability if they patched it. If not, then an alternative solution is required.&#x20;
 
 ## Supporting Evidence
 
@@ -66,11 +93,11 @@ The next step is to further enumerate the target with a port scanner. The screen
 
 Another enumeration tool is wpscan. We can see that a wordpress server is running in the previous screenshot. We can use wpscan to enumerate the web server. Next, attempt to navigate the website.&#x20;
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Website</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>Website</p></figcaption></figure>
 
 The screenshot above shows the landing space for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
 
 ### Initial Compromise / Foothold&#x20;
 
@@ -100,13 +127,13 @@ The screenshot above shows login to the target machine. The screenshot below sho
 
 ### Enumeration - Boromir
 
-<figure><img src="../.gitbook/assets/image (6) (1).png" alt=""><figcaption><p>First target IP</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption><p>First target IP</p></figcaption></figure>
 
 The first step in enumerating the Boromir target is to determine what subnet it is on. a quick look at the IP of the WordPress machine shows us the new subnet of 10.0.6.x. There are a variety of ways to determine what is on the network. I chose to just ping the next IP.
 
 <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption><p>Pinging of Boromir </p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
 
 Next, in order to gain further information, the IP was curled to determine if there was anything running a web server. Luckily, there was. the screenshot above shows the html content. Knowing this, I setup proxy chains so I could navigate to the site and eventually exploit it.
 
@@ -118,7 +145,7 @@ Instructions on how to setup ProxyChains
 
 After setting proxy chains you can then nmap against the target and set a proxy in Firefox to navigate to the site
 
-<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
 
 This website is using WebSVN 2.6.0. This is critical to the foothold. After searching google for a vulnerability the following unauthenticated RCE came up:
 
@@ -128,7 +155,7 @@ Vulnerability Code
 
 There is an issue with this payload though. A few lines have to be edited for it to work. Adding print statements for feedback is helpful when debugging.&#x20;
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>Changes to script</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption><p>Changes to script</p></figcaption></figure>
 
 The payload had to be changed to reflect the kali attacker machine for a reverse shell. Boromir also only allows 80 and 443 out so it needs to use 443. Lastly, there is an extra parent directory websvn that is used. Once inside the Boromir target credentials need to be found. A directory with Boromir's hash can be found in /etc/ called svn-auth-accounts then cracked with RockYou and Hashcat.&#x20;
 
@@ -142,7 +169,7 @@ $apr1$/dPEVRIP$33jd0o1KAzXVVJaSPDwCV/:boromir1984
 
 Now that we have the password, we can SSH to Boromir instead of using the reverse shell still using proxy chains. This gives us the user flag. This all can be seen below.&#x20;
 
-<figure><img src="../.gitbook/assets/image (17) (1).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
 
 **Username**: Boromir
 
@@ -152,4 +179,4 @@ Now that we have the password, we can SSH to Boromir instead of using the revers
 
 The last step is to Privilege escalate. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>

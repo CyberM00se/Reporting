@@ -96,7 +96,7 @@ Burp suite gives an editable output of what the page is sending to the web serve
 
 The command above is the command to cat the /etc/passwd file of the target machine and start a reverse shell.
 
-<figure><img src="../.gitbook/assets/image (8).png" alt=""><figcaption><p>Attack in Burpsuite</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (8) (1).png" alt=""><figcaption><p>Attack in Burpsuite</p></figcaption></figure>
 
 Because the attack is going through the web server, the attack needs to be URL encoded. If not the attack will fail and error out.
 
@@ -144,11 +144,11 @@ We want to elevate the reverse shell to a Meterpreter session so we can execute 
 
 This shows the options of how to elevate the reverse shell to Meterpreter session
 
-<figure><img src="../.gitbook/assets/image (14).png" alt=""><figcaption><p>How to list sessions</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (14) (1).png" alt=""><figcaption><p>How to list sessions</p></figcaption></figure>
 
 Using the command _sessions -i_ we can list the current active sessions
 
-<figure><img src="../.gitbook/assets/image (11) (1).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (11).png" alt=""><figcaption><p>elevation setting options</p></figcaption></figure>
 
 This screenshot shows the settings set so you can elevate the connection
 
@@ -178,7 +178,7 @@ The top box is the format for how to set the proxy in the exploit. This is criti
 
 <figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
 
 This screenshot shows the root flag as proof of root compromise.
 
