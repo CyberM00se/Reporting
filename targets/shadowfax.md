@@ -1,6 +1,6 @@
 # ShadowFax
 
-The aim of this Pentest is to assess the security of a clients endpoint Bifur. This report contains technical terms, but has been written so a non-technical reader with basic computing knowledge would understand it. Technical context will be provided in the appendices and screenshots. Should the reader encounter difficulties understanding any section of the report, reading the "Executive Summary" and the "Conclusions and Recommendations" section. For further help, contact the help department.&#x20;
+The aim of this Pentest is to assess the security of a clients endpoint ShadowFax. This report contains technical terms, but has been written so a non-technical reader with basic computing knowledge would understand it. Technical context will be provided in the appendices and screenshots. Should the reader encounter difficulties understanding any section of the report, reading the "Executive Summary" and the "Conclusions and Recommendations" section. For further help, contact the help department.&#x20;
 
 ### Some Definitions
 
@@ -41,11 +41,15 @@ The aim of this Pentest is to assess the security of a clients endpoint Bifur. T
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
+
+
 #### Vulnerability Detection
 
 This section will detail how the initial vulnerability was found and exploited.
 
 #### Foothold
+
+#### ![](../.gitbook/assets/image.png)
 
 #### Privilege Escalation
 
@@ -66,3 +70,5 @@ Loot Page
 In conclusion
 
 ### **Lab Issues**
+
+****

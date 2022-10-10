@@ -87,7 +87,7 @@ The first step in the Pentest was to enumerate the network to find the target. T
 
 The next step is to further enumerate the target with a port scanner. The screenshot above shows the open services on the target. The screenshot below shows more details
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>nmap scan with additional flags</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (22) (1).png" alt=""><figcaption><p>nmap scan with additional flags</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (18).png" alt=""><figcaption><p>Wpscan</p></figcaption></figure>
 
@@ -97,7 +97,7 @@ Another enumeration tool is wpscan. We can see that a wordpress server is runnin
 
 The screenshot above shows the landing page for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
 
 ### Initial Compromise / Foothold&#x20;
 
