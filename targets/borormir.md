@@ -97,7 +97,7 @@ Another enumeration tool is wpscan. We can see that a wordpress server is runnin
 
 The screenshot above shows the landing page for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
-<figure><img src="../.gitbook/assets/image (22).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (22) (2).png" alt=""><figcaption><p>Admin login</p></figcaption></figure>
 
 ### Initial Compromise / Foothold&#x20;
 
@@ -169,7 +169,7 @@ $apr1$/dPEVRIP$33jd0o1KAzXVVJaSPDwCV/:boromir1984
 
 Now that we have the password, we can SSH to Boromir instead of using the reverse shell still using proxy chains. This gives us the user flag. This all can be seen below.&#x20;
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (17) (1).png" alt=""><figcaption><p>Logging into the boromir account</p></figcaption></figure>
 
 **Username**: Boromir
 

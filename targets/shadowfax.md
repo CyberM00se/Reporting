@@ -18,22 +18,23 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 ## Hostname
 
-| IP Addresses | Network    |
-| ------------ | ---------- |
-|              | .shire.org |
+| IP Addresses | Network                                |
+| ------------ | -------------------------------------- |
+| 10.0.6.52    | shadowfax.shire.org (different subnet) |
+| 10.0.5.250   | fw-rivendell.shire.org                 |
 
 ### Target Overview
 
 ### Vulnerabilities&#x20;
 
-> #### Local File Inclusion
+#### Severity (9.8 Remote Code Execution) - AnyDesk CVE: [2020-13160](https://nvd.nist.gov/vuln/detail/CVE-2020-13160)
 
-*   Severity (High Threat Directory Traversal)
-
-    > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
+* > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
 *   Mitigation
 
-    > The web form needs to validate inputs and maintain a whitelist of acceptable filenames. In addition, a corresponding identifier (not the actual name) to access the file should be used. Any request containing an invalid identifier can then simply be rejected. This is the [approach that OWASP recommends](https://www.owasp.org/index.php/Testing\_for\_Remote\_File\_Inclusion). Refer to the source below for more information on mitigation.
+    >
+
+{% embed url="https://www.exploit-db.com/exploits/49613" %}
 
 ## Supporting Evidence
 
@@ -49,7 +50,7 @@ This section will detail how the initial vulnerability was found and exploited.
 
 #### Foothold
 
-#### ![](../.gitbook/assets/image.png)
+#### ![](<../.gitbook/assets/image (22).png>)
 
 #### Privilege Escalation
 
@@ -57,9 +58,13 @@ Privilege escalation typically starts out with searching through currently runni
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+
 #### Persistence
 
+<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
 
+<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
 
 **Post Exploitation (Loot)**
 
