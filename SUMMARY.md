@@ -10,6 +10,7 @@
 ## Useful Things
 
 * [Proxy Chains](useful-things/proxy-chains.md)
+* [Socat](useful-things/socat.md)
 
 ## Labs
 

@@ -70,11 +70,11 @@ Source
 
 ### Scanning and Enumeration
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>nmap of IP to determine services</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (1).png" alt=""><figcaption><p>nmap of IP to determine services</p></figcaption></figure>
 
 The Nmap scan shows the service scan of the target IP. Two services can be seen to be open: SSH and Nginx. This lets us know that there is probably an active web page.
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>live webpage</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19) (1).png" alt=""><figcaption><p>live webpage</p></figcaption></figure>
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
@@ -172,7 +172,7 @@ The top box is the format for how to set the proxy in the exploit. This is criti
 
 <figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>Flags to force the exploit to work</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (39) (1).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
 
