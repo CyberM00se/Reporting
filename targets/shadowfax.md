@@ -42,7 +42,9 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
+<figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
+####
 
 #### Vulnerability Detection
 
@@ -50,21 +52,23 @@ This section will detail how the initial vulnerability was found and exploited.
 
 #### Foothold
 
-#### ![](<../.gitbook/assets/image (22).png>)
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
 #### Privilege Escalation
 
 Privilege escalation typically starts out with searching through currently running services, SUID bits, and more. The program Linpeas.sh is typically another good start that automatically runs through most of the checks. Often times this gives us the best place to look not an actual vulnerability.&#x20;
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 #### Persistence
 
-<figure><img src="../.gitbook/assets/image (36).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (17).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 **Post Exploitation (Loot)**
 

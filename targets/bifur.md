@@ -172,7 +172,7 @@ The top box is the format for how to set the proxy in the exploit. This is criti
 
 <figure><img src="../.gitbook/assets/image (20).png" alt=""><figcaption><p>Flags to force the exploit to work</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (39) (1).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
 
