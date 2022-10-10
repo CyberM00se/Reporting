@@ -145,7 +145,7 @@ Instructions on how to setup ProxyChains
 
 After setting proxy chains you can then nmap against the target and set a proxy in Firefox to navigate to the site
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (2).png" alt=""><figcaption><p>Boromir Site</p></figcaption></figure>
 
 This website is using WebSVN 2.6.0. This is critical to the foothold. After searching google for a vulnerability the following unauthenticated RCE came up:
 
@@ -179,7 +179,7 @@ Now that we have the password, we can SSH to Boromir instead of using the revers
 
 The last step is to Escalate Privilege. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 ### Conclusions and Recommendations
 
