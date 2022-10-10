@@ -126,10 +126,6 @@ set lport <not being used port ex. 5559>
 exploit
 ```
 
-#### Running exploit with proxy
-
-s
-
 </details>
 
 <figure><img src="../.gitbook/assets/image (45).png" alt=""><figcaption><p>Creating Reverse Shell in metasploit</p></figcaption></figure>
