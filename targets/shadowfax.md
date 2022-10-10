@@ -44,13 +44,15 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
-####
-
 #### Vulnerability Detection
 
 This section will detail how the initial vulnerability was found and exploited.
 
 #### Foothold
+
+Because this vulnerability needs to connect to port 50001
+
+{% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/socat" %}
 
 <figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
