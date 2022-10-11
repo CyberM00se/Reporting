@@ -48,9 +48,27 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 This section will detail how the initial vulnerability was found and exploited.
 
-#### Foothold
+### Foothold
 
-Because this vulnerability needs to connect to port 50001
+#### Vulnerability Research
+
+
+
+#### AnyDesk RCE Vulnerability
+
+
+
+#### Setting up Socat
+
+
+
+#### Gaining a reverse shell
+
+
+
+#### Upgrading shell
+
+
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/socat" %}
 
@@ -58,19 +76,27 @@ Because this vulnerability needs to connect to port 50001
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
 
-#### Privilege Escalation
+### Privilege Escalation
 
 Privilege escalation typically starts out with searching through currently running services, SUID bits, and more. The program Linpeas.sh is typically another good start that automatically runs through most of the checks. Often times this gives us the best place to look not an actual vulnerability.&#x20;
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+#### Enumeration
 
-<figure><img src="../.gitbook/assets/image (6).png" alt=""><figcaption></figcaption></figure>
+Linpeas
+
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (10).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
+
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>root flag</p></figcaption></figure>
+
+
 
 #### Persistence
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>User creation</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>SSHed into my account and in sudo group</p></figcaption></figure>
 
 **Post Exploitation (Loot)**
 
