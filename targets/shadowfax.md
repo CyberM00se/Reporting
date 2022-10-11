@@ -53,7 +53,11 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
+
+#### SSL Certificate
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 ### Foothold
 
@@ -63,11 +67,11 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 **MsVenom Payload Creation**
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
 
 #### AnyDesk RCE Vulnerability
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (3).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
 #### Setting up Socat
 
@@ -83,7 +87,7 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/metasploit-shells" %}
 
-<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag</p></figcaption></figure>
 
@@ -95,7 +99,7 @@ Privilege escalation typically starts out with searching through currently runni
 
 Linpeas
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
 
