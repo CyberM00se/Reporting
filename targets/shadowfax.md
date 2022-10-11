@@ -61,11 +61,11 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 
 
-#### AnyDesk RCE Vulnerability
-
 **MsVenom Payload Creation**
 
-<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+#### AnyDesk RCE Vulnerability
 
 <figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
@@ -83,7 +83,7 @@ This is the live webpage active on the target. To enumerate further I inspected 
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/metasploit-shells" %}
 
-<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag</p></figcaption></figure>
 

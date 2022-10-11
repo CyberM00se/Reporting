@@ -16,7 +16,7 @@ sudo socat UDP4-LISTEN:50001,fork TCP4:localhost:5222
 
 ### SSH Forward
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 ```bash
 ssh -L 5222:localhost:5222 -N noah@10.0.5.250
