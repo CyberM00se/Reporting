@@ -32,9 +32,16 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 * > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
 *   Mitigation
 
-    >
+    > Update software
 
 {% embed url="https://www.exploit-db.com/exploits/49613" %}
+
+#### Severity (00 PwnKit) - PwnKit CVE:&#x20;
+
+* > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
+*   Mitigation
+
+    > Update software
 
 ## Supporting Evidence
 
@@ -60,7 +67,7 @@ This section will detail how the initial vulnerability was found and exploited.
 
 #### Setting up Socat
 
-
+{% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/socat" %}
 
 #### Gaining a reverse shell
 
@@ -68,9 +75,11 @@ This section will detail how the initial vulnerability was found and exploited.
 
 #### Upgrading shell
 
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
-{% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/socat" %}
+
+{% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/metasploit-shells" %}
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag</p></figcaption></figure>
 
