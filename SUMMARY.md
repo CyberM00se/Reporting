@@ -9,6 +9,7 @@
 
 ## Useful Things
 
+* [Metasploit Shells](useful-things/metasploit-shells.md)
 * [Proxy Chains](useful-things/proxy-chains.md)
 * [Socat](useful-things/socat.md)
 

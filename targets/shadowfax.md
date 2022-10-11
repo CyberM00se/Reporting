@@ -42,7 +42,7 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
-<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
 #### Vulnerability Detection
 
@@ -84,15 +84,15 @@ Linpeas
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>root flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (49).png" alt=""><figcaption><p>root flag</p></figcaption></figure>
 
 #### Persistence
 
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>User creation</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>SSHed into my account and in sudo group</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>SSHed into my account and in sudo group</p></figcaption></figure>
 
 **Post Exploitation (Loot)**
 

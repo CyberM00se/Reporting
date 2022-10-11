@@ -93,7 +93,7 @@ The next step is to further enumerate the target with a port scanner. The screen
 
 Another enumeration tool is wpscan. We can see that a wordpress server is running in the previous screenshot. We can use wpscan to enumerate the web server. Next, attempt to navigate the website.&#x20;
 
-<figure><img src="../.gitbook/assets/image (4) (2) (1).png" alt=""><figcaption><p>Website</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>Website</p></figcaption></figure>
 
 The screenshot above shows the landing page for the website. Because we know its WordPress, we can try and login to the admin page. http://site/wp-admin
 
@@ -179,7 +179,7 @@ Now that we have the password, we can SSH to Boromir instead of using the revers
 
 The last step is to Escalate Privilege. The priv. esc. for this target is an improper configuration and password reuse. The user can just use the command **su root** and Boromir's password to gain access.&#x20;
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (2).png" alt=""><figcaption></figcaption></figure>
 
 ### Conclusions and Recommendations
 
