@@ -132,7 +132,7 @@ exploit
 
 This shows how to gain an active reverse shell to the target from Metasploit
 
-<figure><img src="../.gitbook/assets/image (34).png" alt=""><figcaption><p>elevating the shell to a meterpreter shell</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (34) (1).png" alt=""><figcaption><p>elevating the shell to a meterpreter shell</p></figcaption></figure>
 
 We want to elevate the reverse shell to a Meterpreter session so we can execute our privilege Escalation.
 
