@@ -45,11 +45,15 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 ## Supporting Evidence
 
+### Prerequisites
+
+
+
 ### Scanning and Enumeration
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
 #### Vulnerability Detection
 
@@ -62,6 +66,10 @@ This section will detail how the initial vulnerability was found and exploited.
 
 
 #### AnyDesk RCE Vulnerability
+
+**MsVenom Payload Creation**
+
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
