@@ -133,7 +133,7 @@ The first step in enumerating the Boromir target is to determine what subnet it 
 
 <figure><img src="../.gitbook/assets/image (33).png" alt=""><figcaption><p>Pinging of Boromir </p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (1) (2).png" alt=""><figcaption><p>attempted Curl of IP</p></figcaption></figure>
 
 Next, in order to gain further information, the IP was curled to determine if there was anything running as a web server. Luckily, there was. the screenshot above shows the html content. Knowing this, I setup proxy chains so I could navigate to the site and eventually exploit it.
 

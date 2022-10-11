@@ -174,7 +174,7 @@ The top box is the format for how to set the proxy in the exploit. This is criti
 
 <figure><img src="../.gitbook/assets/image (39).png" alt=""><figcaption><p>Screenshot of the exploit running</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (5) (2) (1).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (2).png" alt=""><figcaption><p>Screenshot of Root Flag</p></figcaption></figure>
 
 This screenshot shows the root flag as proof of root compromise.
 
