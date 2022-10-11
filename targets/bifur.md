@@ -162,7 +162,7 @@ Even though I know there are vulnerabilities, I need to determine what version i
 
 <figure><img src="../.gitbook/assets/image (31).png" alt=""><figcaption><p>Webmin version number</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption><p>Creating a Proxy in Metasploit</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (1) (1).png" alt=""><figcaption><p>Creating a Proxy in Metasploit</p></figcaption></figure>
 
 Webmin is a http service that runs locally. In order for this specific exploit to work, you need to setup a reverse proxy. The picture above is how that is setup.
 
@@ -186,7 +186,7 @@ This screenshot shows the creation of my own user. This allows me to directly SS
 
 <figure><img src="../.gitbook/assets/image (26).png" alt=""><figcaption><p>mod the created user</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (5) (1).png" alt=""><figcaption><p>my user passwd</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5) (1) (1).png" alt=""><figcaption><p>my user passwd</p></figcaption></figure>
 
 Persistance Account PW: Youcantguessmypassword1a
 

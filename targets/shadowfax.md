@@ -42,7 +42,7 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
 
-<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
 #### Vulnerability Detection
 
@@ -56,7 +56,7 @@ This section will detail how the initial vulnerability was found and exploited.
 
 #### AnyDesk RCE Vulnerability
 
-
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
 #### Setting up Socat
 
@@ -64,19 +64,15 @@ This section will detail how the initial vulnerability was found and exploited.
 
 #### Gaining a reverse shell
 
-
+<figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>reverse shell</p></figcaption></figure>
 
 #### Upgrading shell
 
-
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/socat" %}
 
-<figure><img src="../.gitbook/assets/image (1) (3).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>reverse shell</p></figcaption></figure>
-
-<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>user flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag</p></figcaption></figure>
 
 ### Privilege Escalation
 
@@ -86,9 +82,9 @@ Privilege escalation typically starts out with searching through currently runni
 
 Linpeas
 
-<figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>root flag</p></figcaption></figure>
 
@@ -96,7 +92,7 @@ Linpeas
 
 <figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>User creation</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (4) (1).png" alt=""><figcaption><p>SSHed into my account and in sudo group</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (4) (2).png" alt=""><figcaption><p>SSHed into my account and in sudo group</p></figcaption></figure>
 
 **Post Exploitation (Loot)**
 
