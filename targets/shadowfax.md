@@ -36,7 +36,7 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 {% embed url="https://www.exploit-db.com/exploits/49613" %}
 
-#### Severity (00 PwnKit) - PwnKit CVE:&#x20;
+#### Severity (7.9 High) - PwnKit CVE: \[2021-4034]\([https://nvd.nist.gov/vuln/detail/cve-2021-4034](https://nvd.nist.gov/vuln/detail/cve-2021-4034))
 
 * > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
 *   Mitigation
