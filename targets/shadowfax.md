@@ -57,7 +57,11 @@ Pwnkit Mitigation Source
 
 ### Prerequisites
 
+The pen-test of ShadowFax requires the previous exploitation of fw-rivendell (Wordpress target). The target is hosted on the 10.0.6.0 subnet so fw-rivendell will be used as a pivot machine. For instructions on how fw-rivendell was exploited see the fw-rivendell report below.
 
+{% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/targets/borormir" %}
+fw-rivendell Pen-test Report
+{% endembed %}
 
 ### Scanning and Enumeration
 
