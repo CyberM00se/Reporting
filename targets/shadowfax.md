@@ -1,20 +1,22 @@
 # ShadowFax
 
-The aim of this Pentest is to assess the security of a clients endpoint ShadowFax. This report contains technical terms, but has been written so a non-technical reader with basic computing knowledge would understand it. Technical context will be provided in the appendices and screenshots. Should the reader encounter difficulties understanding any section of the report, reading the "Executive Summary" and the "Conclusions and Recommendations" section. For further help, contact the help department.&#x20;
+The aim of this Pentest is to assess the security of a client's endpoint ShadowFax. This report contains technical terms, but has been written so a non-technical reader with basic computing knowledge would understand it. The technical context will be provided in the Supporting Evidence section. Should the reader encounter difficulties understanding any technical section of the report, reading the "Executive Summary" and the "Conclusions and Recommendations" sections should provide enough context to the overall status of the pen-tested target. For further help, contact the help department.&#x20;
 
 ### Some Definitions
 
-**Hacker**: term given by the public that the cyber security industry more accurately call and attacker or intruder.
+**Hacker**: A term given by the public that the cyber security industry more accurately called an attacker or intruder.
 
-**Vulnerability:** Typically a bug or a misconfiguration in a computer program, or computer that can be abused to gain access on a computer
+**Vulnerability:** Typically a bug or a misconfiguration in a computer program, or computer that can be abused to gain access to a computer
 
 **Exploit:** A program or strategy to exploit a vulnerability.&#x20;
 
 **Privilege Escalation:** A technique to escalate privileges on a computer, often to an admin user.
 
-**Metasploit/Meterpreter:** A tool that was designed to execute various vulnerabilities automatically. Helpful for Penetration Testing
+**Metasploit/Meterpreter:** A tool designed to execute various vulnerabilities automatically. Helpful for Penetration Testing
 
 {% embed url="https://pentestreports.com/reports/BitesPenTesting/penetration-test-report.html" %}
+Example Pen-Test Report
+{% endembed %}
 
 ## Hostname
 
