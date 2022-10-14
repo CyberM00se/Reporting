@@ -91,13 +91,13 @@ Using Google and Searchsploit, I was able to find the following AnyDesk vulnerab
 
 <figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>MSVenom Payload</p></figcaption></figure>
 
-The payload above creates a reverse tcp shell to my kali machine on port 5552. the shellcode is then copied and placed into the AnyDesk exploit.
+The payload above creates a reverse TCP shell to my kali machine on port 5552. the shellcode is then copied and placed into the AnyDesk exploit.
 
 #### AnyDesk RCE Vulnerability
 
 <figure><img src="../.gitbook/assets/image (1) (1) (3).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
-The exploit can be seen above. Now for the exploit to execute on the target, there is an issue. ProxyChains forwards commands over TCP. However, the exploit has to be sent to the 50001 port over UDP. In order to get this to work, a program called socat needs to be setup. Socat is a bidirectional relay for packets. We can create a socat relay from kali to elrond on fw-rivendell UDP:\<customPort> to TCP:\<Customport>. Then on fw-rivendell make another reley going from fw-rivendell to ShadowFax TCP:\<CustomPort> to UDP:<50001>. Further instuctions can be found below.
+The exploit can be seen above. Now for the exploit to execute on the target, there is an issue. ProxyChains forwards commands over TCP. However, the exploit has to be sent to the 50001 port over UDP. In order to get this to work, a program called Socat needs to be setup. Socat is a bidirectional relay for packets. We can create a socat relay from kali to Elrond on fw-rivendell UDP:\<customPort> to TCP:\<Customport>. Then on fw-rivendell make another relay going from fw-rivendell to ShadowFax TCP:\<CustomPort> to UDP:<50001>. Further instructions can be found below.
 
 #### Setting up Socat
 
@@ -109,17 +109,19 @@ Setting up Socat
 
 <figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>reverse shell</p></figcaption></figure>
 
-This screenshot shows the reverse shell of the exploit. We can see the Shadowfax userflag and other directories. While using netcat to catch the reverse shell is great, we really want to use metasploit so we can use its modules for privilege escalation.&#x20;
+This screenshot shows the reverse shell of the exploit. We can see the Shadowfax user flag and other directories. While using Netcat to catch the reverse shell is great, we really want to use Metasploit so we can use its modules for privilege escalation.&#x20;
 
 #### Upgrading shell
 
-
+In order to easily do the privilege escalation, the reverse shell should be a Meterpreter connection. For instructions on how to do this in Metasploit, refer to the guide below.
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/metasploit-shells" %}
+Creating and Upgrading shells in Metasploit
+{% endembed %}
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Getting the reverse shell connection</p></figcaption></figure>
 
-<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag contents</p></figcaption></figure>
 
 ### Privilege Escalation
 
