@@ -29,10 +29,10 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 #### Severity (9.8 Remote Code Execution) - AnyDesk CVE: [2020-13160](https://nvd.nist.gov/vuln/detail/CVE-2020-13160)
 
-* > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
+* > AnyDesk has a format string vulnerability that can be exploited for remote code execution. This allows for an attacker to establish a remote connection to the target and gain local access.
 *   Mitigation
 
-    > Update software
+    > The solution is to update anydesk from 5.52 to version 7.1.5. Outdated software is often very vulnerable to exploits.&#x20;
 
 {% embed url="https://www.exploit-db.com/exploits/49613" %}
 
