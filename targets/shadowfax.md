@@ -59,7 +59,7 @@ Pwnkit Mitigation Source
 
 ### Prerequisites
 
-The pen-test of ShadowFax requires the previous exploitation of fw-rivendell (Wordpress target). The target is hosted on the 10.0.6.0 subnet so fw-rivendell will be used as a pivot machine. For instructions on how fw-rivendell was exploited see the fw-rivendell report below.
+The pen-test of ShadowFax requires the previous exploitation of fw-rivendell (WordPress target). The target is hosted on the 10.0.6.0 subnet so fw-rivendell will be used as a pivot machine. For instructions on how fw-rivendell was exploited see the fw-rivendell report below.
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/targets/borormir" %}
 fw-rivendell Pen-test Report
@@ -67,25 +67,25 @@ fw-rivendell Pen-test Report
 
 ### Scanning and Enumeration
 
-The first step to enumerating shadowfax was to setup my proxy. The target machine is hosted on a different subnet so proxy chains is setup through fw-rivendell. This allows for scanning tools and exploits to be run on my pentest machine versus downloading them to fw-rivendell.
+The first step to enumerating ShadowFax was to set up my proxy. The target machine is hosted on a different subnet so proxy chains is set up through fw-rivendell. This allows for scanning tools and exploits to be run on my pentest machine versus downloading them to fw-rivendell.
 
-My the next step was to scan the target. This can be seen in a screenshot below.
+The next step was to scan the target. This can be seen in a screenshot below.
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
-There are 3 key ports open on the target. SSH using 22, and Anydesk using 7070 and 50001. when trying to navigate to the 7070 webpage no connection can be made. However we can pull the ssl certificate from the port.
+There are 3 key ports open on the target. SSH using 22, and Anydesk using 7070 and 50001. when trying to navigate to the 7070 webpage no connection can be made. However, we can pull the SSL certificate from the port.
 
 #### SSL Certificate
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Shadowfax SSL cert</p></figcaption></figure>
 
-The ssl cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on anydesk vulnerabilities, we can find that it uses 7070 for TCP and 50001 for udp. This will be important later.
+The SSL cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on AnyDesk vulnerabilities, we can find that it uses 7070 for TCP and 50001 for UDP. This will be important later.
 
 ### Foothold
 
 #### Vulnerability Research
 
-Using Google and Searchsploit, I was able to find the following anydesk vulnerability. It uses a buffer overflow to exploit an RCE and create a reverse shell. In order to configure the exploit some custom shellcode has to be created. This can be done using a program called MsVenom.
+Using Google and Searchsploit, I was able to find the following AnyDesk vulnerability. It uses a buffer overflow to exploit an RCE and create a reverse shell. In order to configure the exploit, some custom shellcode has to be created. This can be done using a program called MsVenom.
 
 **MsVenom Payload Creation**
 
