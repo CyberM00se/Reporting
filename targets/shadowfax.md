@@ -129,7 +129,7 @@ Privilege escalation typically starts out with searching through currently runni
 
 #### Enumeration
 
-Linpeas
+After running Linpeas, it&#x20;
 
 <figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
 
