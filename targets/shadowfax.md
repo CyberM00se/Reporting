@@ -65,19 +65,25 @@ fw-rivendell Pen-test Report
 
 ### Scanning and Enumeration
 
-This is the live webpage active on the target. To enumerate further I inspected the webpage code using the network page and raw inspector. This showed me that there is a function being passed when the log files view file button is pressed. This can be seen in a screenshot below.
+The first step to enumerating shadowfax was to setup my proxy. The target machine is hosted on a different subnet so proxy chains is setup through fw-rivendell. This allows for scanning tools and exploits to be run on my pentest machine versus downloading them to fw-rivendell.
+
+My the next step was to scan the target. This can be seen in a screenshot below.
 
 <figure><img src="../.gitbook/assets/image (5).png" alt=""><figcaption><p>Nmap scan of target</p></figcaption></figure>
 
+There are 3 key ports open on the target. SSH using 22, and Anydesk using 7070 and 50001. when trying to navigate to the 7070 webpage no connection can be made. However we can pull the ssl certificate from the port.
+
 #### SSL Certificate
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Shadowfax SSL cert</p></figcaption></figure>
+
+The ssl cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on anydesk vulnerabilities, we can find that it uses 7070 for tcp and 50001 for udp. This will be important later.
 
 ### Foothold
 
 #### Vulnerability Research
 
-
+Using Google and searchsploit, i was able to find the following anydesk vulnerability. It uses a buffer overflow to exploit an RCE and create a reverse shell. In order to configure the exploit some custom shellcode has to be created&#x20;
 
 **MsVenom Payload Creation**
 
