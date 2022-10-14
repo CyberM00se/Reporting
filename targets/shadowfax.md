@@ -1,6 +1,6 @@
 # ShadowFax
 
-The aim of this Pentest is to assess the security of a client's endpoint ShadowFax. This report contains technical terms, but has been written so a non-technical reader with basic computing knowledge would understand it. The technical context will be provided in the Supporting Evidence section. Should the reader encounter difficulties understanding any technical section of the report, reading the "Executive Summary" and the "Conclusions and Recommendations" sections should provide enough context to the overall status of the pen-tested target. For further help, contact the help department.&#x20;
+The aim of this Pentest is to assess the security of a client's endpoint: ShadowFax. This report contains technical terms, but has been written so a non-technical reader with basic computing knowledge would understand it. The technical context will be provided in the Supporting Evidence section. Should the reader encounter difficulties understanding any technical section of the report, reading the "Executive Summary" and the "Conclusions and Recommendations" sections should provide enough context to the overall status of the pen-tested target. For further help, contact the help department.&#x20;
 
 ### Some Definitions
 
@@ -13,6 +13,8 @@ The aim of this Pentest is to assess the security of a client's endpoint ShadowF
 **Privilege Escalation:** A technique to escalate privileges on a computer, often to an admin user.
 
 **Metasploit/Meterpreter:** A tool designed to execute various vulnerabilities automatically. Helpful for Penetration Testing
+
+**Black Box Test**: A penetration test without having any information beforehand of existing knowledge of the target.
 
 {% embed url="https://pentestreports.com/reports/BitesPenTesting/penetration-test-report.html" %}
 Example Pen-Test Report
