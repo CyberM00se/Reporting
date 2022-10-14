@@ -36,12 +36,22 @@ The aim of this Pentest is to assess the security of a clients endpoint ShadowFa
 
 {% embed url="https://www.exploit-db.com/exploits/49613" %}
 
-#### Severity (7.9 High) - PwnKit CVE: \[2021-4034]\([https://nvd.nist.gov/vuln/detail/cve-2021-4034](https://nvd.nist.gov/vuln/detail/cve-2021-4034))
+#### Severity (7.9 High) - PwnKit CVE: \[2021-4034]&#x20;
 
-* > This vulnerability allows for remote commands to be executed. /etc/passwd can be viewed as well as other commands can be run. This exploit allows for a reverse shell to be established.
+* > This vulnerability allows for local privledge escalation through polkit's pkexec utility. The pkexec application is a setuid tool designed to allow unprivileged users to run commands as privileged users according predefined policies. The current version of pkexec doesn't handle the calling parameters count correctly and ends trying to execute environment variables as commands (NIST).
 *   Mitigation
 
-    > Update software
+    > There are a few mitigations in order to resolve this vulnerability. The first is to remove the SUID bit from pkexec using _0755 /usr/bin/pkexec._ In addition, performing regular audits will help find vulnerabilities before the become a problem. The biggest solution is keeping software and OSs up to date.
+
+
+
+{% embed url="https://nvd.nist.gov/vuln/detail/cve-2021-4034" %}
+NIST CVE Site Page
+{% endembed %}
+
+{% embed url="https://sysdig.com/blog/detecting-mitigating-cve-2021-4034-sysdig/" %}
+Pwnkit Mitigation Source
+{% endembed %}
 
 ## Supporting Evidence
 
