@@ -18,6 +18,10 @@ The aim of this Pentest is to assess the security of a client's endpoint ShadowF
 Example Pen-Test Report
 {% endembed %}
 
+## Executive Summary
+
+The Pentest Team provided a black box penetration test of the ShadowFax system to assess the security of all its operating system, applications, and running services. This penetration test was a manual exploitation of application-based and OS-based vulnerabilities. The target of the assignment covered Shadowfax which had the application AnyDesk installed. The team identified an outdated application and service, was able to run commands on the target, and achieve root compromise. Due to the severity of the exploits, it is advised that updates to the AnyDesk application are performed and removal of the SUID bit from the pkexe service are conducted to remediate the exposed vulnerabilities.&#x20;
+
 ## Hostname
 
 | IP Addresses | Network                                |
