@@ -24,14 +24,14 @@ Example Pen-Test Report
 
 The pentest team provided a black box penetration test of the ShadowFax system to assess the security of all its operating system, applications, and running services. This penetration test was a manual exploitation of application-based and OS-based vulnerabilities. The target of the assignment covered Shadowfax which had the application AnyDesk installed. The team identified an outdated application and service, was able to run commands on the target, and achieve root compromise. Due to the severity of the exploits, it is advised that updates to the AnyDesk application are performed and removal of the SUID bit from the pkexe service are conducted to remediate the exposed vulnerabilities. Resources for remediation can be found below in the vulnerabilities section.
 
-## Hostname
+## Target Overview
+
+### Hostname
 
 | IP Addresses | Network                                |
 | ------------ | -------------------------------------- |
 | 10.0.6.52    | shadowfax.shire.org (different subnet) |
 | 10.0.5.250   | fw-rivendell.shire.org                 |
-
-### Target Overview
 
 ### Vulnerabilities&#x20;
 
@@ -40,7 +40,7 @@ The pentest team provided a black box penetration test of the ShadowFax system t
 * > AnyDesk has a format string vulnerability that can be exploited for remote code execution. This allows for an attacker to establish a remote connection to the target and gain local access.
 *   Mitigation
 
-    > The solution is to update anydesk from 5.52 to version 7.1.5. Outdated software is often very vulnerable to exploits.&#x20;
+    > The solution is to update anydesk from 5.5.2 to version 7.1.5. Outdated software is often very vulnerable to exploits.&#x20;
 
 {% embed url="https://www.exploit-db.com/exploits/49613" %}
 Exploit used
@@ -79,7 +79,7 @@ fw-rivendell Pen-test Report
 
 ### Scanning and Enumeration
 
-The first step to enumerating ShadowFax was to set up my proxy. The target machine is hosted on a different subnet so proxy chains is set up through fw-rivendell. This allows for scanning tools and exploits to be run on my pentest machine versus downloading them to fw-rivendell.
+The first step to enumerating ShadowFax was to set up a proxy. The target machine is hosted on a different subnet so proxy chains sends network traffic through fw-rivendell. This allows for scanning tools and exploits to be run on my pentest machine versus downloading them to fw-rivendell.
 
 The next step was to scan the target. This can be seen in a screenshot below.
 
@@ -91,7 +91,7 @@ There are 3 key ports open on the target. SSH using 22, and Anydesk using 7070 a
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Shadowfax SSL cert</p></figcaption></figure>
 
-The SSL cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on AnyDesk vulnerabilities, we can find that it uses 7070 for TCP and 50001 for UDP. This will be important later.
+The SSL cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on AnyDesk vulnerabilities, it is found that it uses port 7070 for TCP and 50001 for UDP. This will be important later.
 
 ### Foothold
 
@@ -109,7 +109,7 @@ The payload above creates a reverse TCP shell to my kali machine on port 5552. t
 
 <figure><img src="../.gitbook/assets/image (1) (1) (3).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
-The exploit can be seen above. Now for the exploit to execute on the target, there is an issue. ProxyChains forwards commands over TCP. However, the exploit has to be sent to the 50001 port over UDP. In order to get this to work, a program called Socat needs to be setup. Socat is a bidirectional relay for packets. We can create a socat relay from kali to Elrond on fw-rivendell UDP:\<customPort> to TCP:\<Customport>. Then on fw-rivendell make another relay going from fw-rivendell to ShadowFax TCP:\<CustomPort> to UDP:<50001>. Further instructions can be found below.
+The exploit can be seen above. Now for the exploit to execute on the target, there is an issue. ProxyChains forwards commands over TCP. However, the exploit has to be sent to the 50001 port over UDP. In order to get this to work, a program called Socat needs to be setup. Socat is a bidirectional relay for packets. We can create a socat relay from kali to Elrond on fw-rivendell UDP:\<customPort> to TCP:\<Customport>. Then on fw-rivendell, make another relay going from fw-rivendell to ShadowFax TCP:\<CustomPort> to UDP:<50001>. Further instructions can be found below.
 
 #### Setting up Socat
 
