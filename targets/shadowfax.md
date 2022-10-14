@@ -129,17 +129,23 @@ Privilege escalation typically starts out with searching through currently runni
 
 #### Enumeration
 
-After running Linpeas, it&#x20;
+After running Linpeas, it returns that the PwnKit vulnerability is exploitable on Shadowfax. There is a Metasploit module for it also.
 
 <figure><img src="../.gitbook/assets/image (3) (3).png" alt=""><figcaption><p>PwnKit CVE</p></figcaption></figure>
+
+The configuration for the PwnKit exploit consists of the target host, port, and active Meterpreter session.
 
 <figure><img src="../.gitbook/assets/image (48).png" alt=""><figcaption><p>running the exploit</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (49).png" alt=""><figcaption><p>root flag</p></figcaption></figure>
 
+The exploit returns a new Meterpreter session with root-level access. This can be seen in the screenshot above showing the root flag contents.
+
 #### Persistence
 
-<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>User creation</p></figcaption></figure>
+Most malicious actors will establish some form of persistence in the environment they attack. For the sake of the pentest, a user with admin privileges was created. Unfortunately, due to other people attempting to exploit the box my persistence was removed since the target got reverted.
+
+<figure><img src="../.gitbook/assets/image (19).png" alt=""><figcaption><p>User creation and modding</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (4).png" alt=""><figcaption><p>SSHed into my account and in sudo group</p></figcaption></figure>
 
@@ -151,8 +157,8 @@ Loot Page
 
 ### Conclusions and Recommendations
 
-In conclusion
+In conclusion, ShadowFax has critical vulnerabilities that lead to total compromise. As described in the Vulnerabilities section, updating software and the operating system would remove these issues from the environment. Root compromise is a big issue as malicious actors can exfiltrate data, delete or manipulate confidential information, and much more. This needs to be addressed ASAP.
 
 ### **Lab Issues**
 
-****
+This lab did not present a lot of issues. However, learning how to use socat and upgrade a Metasploit connection (again) was kind of difficult. I made sure to make supplemental documentation to reference in the future.
