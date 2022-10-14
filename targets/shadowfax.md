@@ -77,29 +77,37 @@ There are 3 key ports open on the target. SSH using 22, and Anydesk using 7070 a
 
 <figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Shadowfax SSL cert</p></figcaption></figure>
 
-The ssl cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on anydesk vulnerabilities, we can find that it uses 7070 for tcp and 50001 for udp. This will be important later.
+The ssl cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on anydesk vulnerabilities, we can find that it uses 7070 for TCP and 50001 for udp. This will be important later.
 
 ### Foothold
 
 #### Vulnerability Research
 
-Using Google and searchsploit, i was able to find the following anydesk vulnerability. It uses a buffer overflow to exploit an RCE and create a reverse shell. In order to configure the exploit some custom shellcode has to be created&#x20;
+Using Google and Searchsploit, I was able to find the following anydesk vulnerability. It uses a buffer overflow to exploit an RCE and create a reverse shell. In order to configure the exploit some custom shellcode has to be created. This can be done using a program called MsVenom.
 
 **MsVenom Payload Creation**
 
-<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (3).png" alt=""><figcaption><p>MSVenom Payload</p></figcaption></figure>
+
+The payload above creates a reverse tcp shell to my kali machine on port 5552. the shellcode is then copied and placed into the AnyDesk exploit.
 
 #### AnyDesk RCE Vulnerability
 
 <figure><img src="../.gitbook/assets/image (1) (1) (3).png" alt=""><figcaption><p>Screenshot of custom edited payload</p></figcaption></figure>
 
+The exploit can be seen above. Now for the exploit to execute on the target, there is an issue. ProxyChains forwards commands over TCP. However, the exploit has to be sent to the 50001 port over UDP. In order to get this to work, a program called socat needs to be setup. Socat is a bidirectional relay for packets. We can create a socat relay from kali to elrond on fw-rivendell UDP:\<customPort> to TCP:\<Customport>. Then on fw-rivendell make another reley going from fw-rivendell to ShadowFax TCP:\<CustomPort> to UDP:<50001>. Further instuctions can be found below.
+
 #### Setting up Socat
 
 {% embed url="https://technotes.noahbeckman.com/v/sec480-pentest-2/useful-things/socat" %}
+Setting up Socat
+{% endembed %}
 
 #### Gaining a reverse shell
 
 <figure><img src="../.gitbook/assets/image (2) (1).png" alt=""><figcaption><p>reverse shell</p></figcaption></figure>
+
+This screenshot shows the reverse shell of the exploit. We can see the Shadowfax userflag and other directories. While using netcat to catch the reverse shell is great, we really want to use metasploit so we can use its modules for privilege escalation.&#x20;
 
 #### Upgrading shell
 
