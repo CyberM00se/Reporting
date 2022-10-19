@@ -93,7 +93,7 @@ There are 3 key ports open on the target. SSH using 22, and Anydesk using 7070 a
 
 #### SSL Certificate
 
-<figure><img src="../.gitbook/assets/image.png" alt=""><figcaption><p>Shadowfax SSL cert</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption><p>Shadowfax SSL cert</p></figcaption></figure>
 
 The SSL cert gives confirmation that Shadowfax is using Anydesk on port 7070. After research on AnyDesk vulnerabilities, it is found that it uses port 7070 for TCP and 50001 for UDP. This will be important later.
 
@@ -135,7 +135,7 @@ In order to easily do the privilege escalation, the reverse shell should be a Me
 Creating and Upgrading shells in Metasploit
 {% endembed %}
 
-<figure><img src="../.gitbook/assets/image (1) (1).png" alt=""><figcaption><p>Getting the reverse shell connection</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (1) (1) (4).png" alt=""><figcaption><p>Getting the reverse shell connection</p></figcaption></figure>
 
 <figure><img src="../.gitbook/assets/image (2).png" alt=""><figcaption><p>user flag contents</p></figcaption></figure>
 

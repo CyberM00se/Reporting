@@ -49,7 +49,7 @@ Privilege escalation typically starts out with searching through currently runni
 
 #### Persistence
 
-
+![](../.gitbook/assets/image.png)
 
 **Post Exploitation (Loot)**
 
