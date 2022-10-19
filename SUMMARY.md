@@ -6,7 +6,7 @@
 * [Bifur](targets/bifur.md)
 * [Borormir](targets/borormir.md)
 * [ShadowFax](targets/shadowfax.md)
-* [new box](targets/new-box.md)
+* [Rohan](targets/rohan.md)
 
 ## Useful Things
 
