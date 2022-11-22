@@ -20,6 +20,7 @@
 * [File Inclusion Vulnerabilities](labs/file-inclusion-vulnerabilities.md)
 * [Command Injection Vulnerabilities](labs/command-injection-vulnerabilities.md)
 * [Single Point Tunneling](labs/single-point-tunneling.md)
+* [Bert.exe Notes](labs/bert.exe-notes.md)
 
 ## Tools and Loot
 
