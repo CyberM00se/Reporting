@@ -28,6 +28,10 @@ The screenshot below shows the jmp instruction that will be exploited
 
 <figure><img src="https://lh4.googleusercontent.com/G_fdXeOf4-evXNuzBhA5KtrQ8T99-GdfMFSr4dOgmCGkqq5rvhvth5Q3JClGE-ne4L5KR_NC1vcfH3mCWjtes_4Pt65RanlPoeifaMUWgype_jdznooK1rvxc_e0Xy4JSlbojiKHlUm-i_lofoJx_S52uZA6AgtCj0Di2nCHdMM_ofvKsKNgGukT3gc_wQ" alt=""><figcaption><p>exploiting the jump function from the dll</p></figcaption></figure>
 
+Major script changes. The port that is open with this exe is different. It also uses the BERT function instead of TRUN. the offset is different in this also. This ended up being 1753. Lastly, the location of the eip jump function was also different.
+
+<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption></figcaption></figure>
+
 This screenshot shows the exploit working, a reverse shell from the windows box using netcat.
 
 <figure><img src="https://lh4.googleusercontent.com/3-RBe54NFbYjVVfHAgQ4PzSEv3FOcODX2DDFxJshBqf79EalGNWtMDWcOOTZTTganMxFIilyqzLxQx4uryBtx7ffDU-2BguSe_Ca44MMDMdViwV1_Q6N3GGKumuGIhn9DLCWWxJ7RgqH39XCXH6N-SZFUg_G_DmTrCZXniRYmTJcbMdgJpEjhvn2zeyv7w" alt=""><figcaption><p>reverse shell from kali to windows</p></figcaption></figure>

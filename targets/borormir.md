@@ -79,7 +79,7 @@ The aforementioned compromises involve one actual security vulnerabilities (CVE)
 
 ### Scanning and Enumeration - WordPress
 
-<figure><img src="../.gitbook/assets/image (12).png" alt=""><figcaption><p>nslookup of the wordpress box</p></figcaption></figure>
+<figure><img src="../.gitbook/assets/image (12) (1).png" alt=""><figcaption><p>nslookup of the wordpress box</p></figcaption></figure>
 
 The first step in the Pentest was to enumerate the network to find the target. This can be done, as seen above, with the nslookup command.&#x20;
 
