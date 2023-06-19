@@ -4,7 +4,6 @@
 
 ## Targets
 
-* [Gloin](<README (1).md>)
 * [Bifur](targets/bifur.md)
 * [Borormir](targets/borormir.md)
 * [ShadowFax](targets/shadowfax.md)
