@@ -1,8 +1,10 @@
 # Table of contents
 
+* [Penetration Testing Writeups](README.md)
+
 ## Targets
 
-* [Gloin](README.md)
+* [Gloin](<README (1).md>)
 * [Bifur](targets/bifur.md)
 * [Borormir](targets/borormir.md)
 * [ShadowFax](targets/shadowfax.md)
